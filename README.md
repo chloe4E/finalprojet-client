@@ -61,11 +61,7 @@ Pages:
 
 - ProfilePage
 
-- CreateProfilePage
-
 - EditProfilePage
-
-- CreateCoverLetterPage
 
 - JobListPage
 
