@@ -6,7 +6,6 @@ import { useContext } from "react"; // <== IMPORT
 import { AuthContext } from "../context/auth.context"; // <== IMPORT
 import { Button } from "react-bootstrap";
 
-
 function NavBar() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
@@ -21,11 +20,13 @@ function NavBar() {
             <>
               <Nav.Link href="/login">Log in</Nav.Link>
               <Nav.Link href="/signup">Sign up</Nav.Link>
-             
             </>
-            )}
-            {isLoggedIn && (
+          )}
+          {isLoggedIn && (
+            <>
+              <Nav.Link href="/user-profile">My profile</Nav.Link>
               <Button onClick={logOutUser}>Logout</Button>
+            </>
           )}
         </Nav>
       </Container>
