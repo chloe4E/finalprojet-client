@@ -61,7 +61,7 @@ function SignUpPage() {
           </Col>
         </Form.Group>
         <Button type="submit" variant="primary">
-          Primary
+          Sign up
         </Button>
       </Form>
 
