@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Form,
   Button,
@@ -134,8 +135,13 @@ class MasterForm extends Component {
         }
       )
       .then(() => {
+        console.log("we are HERE");
         this.setState({ currentStep: this.state.currentStep + 1 });
-        console.log(this.state);
+      })
+      .then(() => {
+        console.log("we are here dude");
+        const navigate = useNavigate();
+        navigate("/job/cover-letter");
       })
       .catch((err) => console.log(err));
   };
@@ -197,7 +203,7 @@ class MasterForm extends Component {
                   Next
                 </Button>
               ) : null}
-              {this.state.currentStep === 3 && (
+              {this.state.currentStep > 2 && (
                 <Button color="primary float-right" onClick={this.funcStep3}>
                   Submit
                 </Button>
