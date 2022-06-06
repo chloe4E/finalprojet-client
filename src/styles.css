@@ -18,10 +18,13 @@
  @font-face {
   font-family: "neon";
   src: url(../public/Neon.ttf);
+  font-family: lasEnter;
+  src: url(../public/LasEnter_PersonalUseOnly.ttf);
 }
 
-h1, h2 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "neon", monospace;
   color: #F51E71
 
 }
+

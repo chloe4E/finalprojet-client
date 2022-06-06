@@ -30,19 +30,19 @@ function ProfileLandingPage() {
 
   return (
     <>
-      <div>ProfileLandingPage</div>
+     
       <h4>Personal Information</h4>
         { user && ( <>
           <p> {user.name} </p>
           <p> {user.surname} </p>
         </>)}
        
-
+        <h4>Job list</h4>
      <JobCard />
       <Link to="/user-profile/edit">
         <Button>Edit</Button>
       </Link>
-      <h4>Job list</h4>
+     
     </>
   );
 }
