@@ -78,20 +78,67 @@ class MasterForm extends Component {
   }
 
   funcStep1 = (event) => {
-    const storedToken = localStorage.getItem('authToken')
+    const storedToken = localStorage.getItem("authToken");
     event.preventDefault();
-    console.log(this.state)
     const { name, surname } = this.state;
     axios
-      .put(`${process.env.REACT_APP_API_URL}/api/new-user/${this.state.userId}/form`, {
-        name: name,
-        surname: surname,
-      }, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then(() => this.setState({currentStep: this.state.currentStep+1}))
+      .put(
+        `${process.env.REACT_APP_API_URL}/api/new-user/${this.state.userId}/form`,
+        {
+          name: name,
+          surname: surname,
+        },
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
+      .then(() => this.setState({ currentStep: this.state.currentStep + 1 }))
       .catch((err) => console.log(err));
-  }
+  };
+
+  funcStep2 = (event) => {
+    const storedToken = localStorage.getItem("authToken");
+    event.preventDefault();
+
+    const { workExperience } = this.state;
+    axios
+      .post(
+        `${process.env.REACT_APP_API_URL}/api/new-job/${this.state.userId}/form`,
+        {
+          workExperience: workExperience,
+        },
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
+      .then(() => {
+        this.setState({ currentStep: this.state.currentStep + 1 });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  funcStep3 = (event) => {
+    const storedToken = localStorage.getItem("authToken");
+    event.preventDefault();
+    const { jobTitle, jobDescription } = this.state;
+    console.log(this.state);
+    axios
+      .put(
+        `${process.env.REACT_APP_API_URL}/api/new-job/${this.state.userId}/form2`,
+        {
+          title: jobTitle,
+          description: jobDescription,
+        },
+        {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        }
+      )
+      .then(() => {
+        this.setState({ currentStep: this.state.currentStep + 1 });
+        console.log(this.state);
+      })
+      .catch((err) => console.log(err));
+  };
 
   // The "next" and "previous" button functions
   get previousButton() {
@@ -139,12 +186,22 @@ class MasterForm extends Component {
             </CardBody>
             <CardFooter>
               {this.previousButton}
-              {this.state.currentStep === 1 ?
-               ( <Button color="primary float-right" onClick={this.funcStep1}> Next </Button>) :
-         this.state.currentStep === 2 ?
-          ( <Button color="primary float-right" onClick={this.funcStep2}> Next
-        </Button>) : null}
-              {this.state.currentStep === 3 && (<Button color="primary float-right">Submit</Button>)}
+              {this.state.currentStep === 1 ? (
+                <Button color="primary float-right" onClick={this.funcStep1}>
+                  {" "}
+                  Next{" "}
+                </Button>
+              ) : this.state.currentStep === 2 ? (
+                <Button color="primary float-right" onClick={this.funcStep2}>
+                  {" "}
+                  Next
+                </Button>
+              ) : null}
+              {this.state.currentStep === 3 && (
+                <Button color="primary float-right" onClick={this.funcStep3}>
+                  Submit
+                </Button>
+              )}
             </CardFooter>
           </Card>
         </Form>
