@@ -19,24 +19,28 @@ function LoginPage() {
   const handlePassword = (e) => setPassword(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    try{
 
-    const body = { email, password };
-
-    axios
+      
+      const body = { email, password };
+      
+      let response = await axios
       .post(`${process.env.REACT_APP_API_URL}/auth/login`, body)
-      .then((response) => {
-        // Request to the server's endpoint `/auth/login` returns a response
-        // with the JWT string ->  response.data.authToken
-        console.log("JWT token", response.data.authToken);
-        storeToken(response.data.authToken);
-        authenticateUser();
-        navigate("/user-profile");
-      })
-      .catch((err) => {
-        setErrorMessage(err.response.data.errorMessage);
-      });
+      // Request to the server's endpoint `/auth/login` returns a response
+      // with the JWT string ->  response.data.authToken
+      storeToken(response.data.authToken);
+      await authenticateUser();
+      
+      navigate("/new-user/form");
+      
+    }catch(err){
+      setErrorMessage(err.response.data.errorMessage);
+
+    }
+      
+    
   };
 
   return (

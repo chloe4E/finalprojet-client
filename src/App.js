@@ -6,7 +6,7 @@ import CoverLetterPage from "./pages/CoverLetterPage";
 import CreateJobPage from "./pages/CreateJobPage";
 import EditCoverLetterPage from "./pages/EditCoverLetterPage";
 import EditJobDetailPage from "./pages/EditJobDetailPage";
-import EditProfilePage from "./pages/EditProfilePage";
+import NewUserForm from "./pages/NewUserForm";
 import HomePage from "./pages/HomePage";
 import JobDetailsPage from "./pages/JobDetailsPage";
 import LoginPage from "./pages/LoginPage";
@@ -27,7 +27,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/user-profile" element={<ProfileLandingPage />} />
-        <Route path="/user-profile/edit" element={<EditProfilePage />} />
+        <Route path="/new-user/form" element={<NewUserForm />} />
         <Route path="/job/create" element={<CreateJobPage />} />
         <Route path="/job/cover-letter" element={<CoverLetterPage />} />
         <Route path="/job/cover-letter/edit" element={<EditCoverLetterPage />} />

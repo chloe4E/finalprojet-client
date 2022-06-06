@@ -15,7 +15,7 @@ const Step3 = (props) => {
         </Label>
         <Input
           type="text"
-          jobTitle="jobTitle"
+          name="jobTitle"
           id="jobTitle"
           placeholder="Junior Fullstack Developper"
           value={props.jobTitle} // Prop: The jobTitle input data

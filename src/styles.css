@@ -14,3 +14,14 @@
   background: lightgray;
 }
  */
+
+ @font-face {
+  font-family: "neon";
+  src: url(../public/Neon.ttf);
+}
+
+h1, h2 {
+  font-family: "neon", monospace;
+  color: #F51E71
+
+}

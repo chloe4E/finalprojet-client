@@ -10,21 +10,22 @@ function NavBar() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   return (
-    <Navbar bg="primary" variant="dark">
+    <Navbar  style={{backgroundColor: '#F51E71'}}>
       <Container>
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+       
+
         <Nav className="me-auto">
-          <Nav.Link href="/">Home</Nav.Link>
+          <Nav.Link style={{color:"white"}} href="/">Home</Nav.Link>
 
           {!isLoggedIn && (
             <>
-              <Nav.Link href="/login">Log in</Nav.Link>
-              <Nav.Link href="/signup">Sign up</Nav.Link>
+              <Nav.Link style={{color:"white"}} href="/login">Log in</Nav.Link>
+              <Nav.Link style={{color:"white"}} href="/signup">Sign up</Nav.Link>
             </>
           )}
           {isLoggedIn && (
             <>
-              <Nav.Link href="/user-profile">My profile</Nav.Link>
+              <Nav.Link style={{color:"white"}} href="/user-profile">My profile</Nav.Link>
               <Button onClick={logOutUser}>Logout</Button>
             </>
           )}

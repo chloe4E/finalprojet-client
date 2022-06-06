@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import WorkHistoryForm from "../components/WorkHistoryForm";
 import EducationForm from "../components/EducationForm";
 import PersonalInfoForm from "../components/PersonalInformationForm";
@@ -11,7 +11,13 @@ import { Container, Row, Col } from "reactstrap";
 import "../styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function EditProfilePage() {
+import { AuthContext } from "../context/auth.context";
+
+
+function NewUserForm() {
+
+  const {user} = useContext(AuthContext)
+
   return (
     <>
       <div>EditProfilePage</div>
@@ -24,7 +30,7 @@ function EditProfilePage() {
       <Container>
         <Row>
           <Col>
-            <MasterForm />
+            <MasterForm userId={user._id}/>
           </Col>
         </Row>
       </Container>
@@ -32,4 +38,4 @@ function EditProfilePage() {
   );
 }
 
-export default EditProfilePage;
+export default NewUserForm;

@@ -17,16 +17,21 @@ import Step3 from "./Step3";
 import styled from "styled-components";
 import MultiStepProgressBar from "./MultiStepProgressBar";
 
+import axios from "axios";
+
 class MasterForm extends Component {
   constructor(props) {
     super(props);
 
     // Set the intiial input values
     this.state = {
+      userId: this.props.userId,
       currentStep: 1,
-      email: "",
-      username: "",
-      password: "",
+      name: "",
+      surname: "",
+      workExperience: "",
+      jobTitle: "",
+      jobDescription: "",
     };
 
     // Bind the submission to handleChange()
@@ -48,11 +53,7 @@ class MasterForm extends Component {
   // Trigger an alert on form submission
   handleSubmit = (event) => {
     event.preventDefault();
-    const { email, username, password } = this.state;
-    alert(`Your registration detail: \n 
-      Email: ${email} \n 
-      Username: ${username} \n
-      Password: ${password}`);
+    const { name, surname } = this.state;
   };
 
   // Test current step with ternary
@@ -76,6 +77,22 @@ class MasterForm extends Component {
     });
   }
 
+  funcStep1 = (event) => {
+    const storedToken = localStorage.getItem('authToken')
+    event.preventDefault();
+    console.log(this.state)
+    const { name, surname } = this.state;
+    axios
+      .put(`${process.env.REACT_APP_API_URL}/api/new-user/${this.state.userId}/form`, {
+        name: name,
+        surname: surname,
+      }, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then(() => this.setState({currentStep: this.state.currentStep+1}))
+      .catch((err) => console.log(err));
+  }
+
   // The "next" and "previous" button functions
   get previousButton() {
     let currentStep = this.state.currentStep;
@@ -90,31 +107,6 @@ class MasterForm extends Component {
     }
 
     // ...else return nothing
-    return null;
-  }
-
-  get nextButton() {
-    let currentStep = this.state.currentStep;
-    // If the current step is not 3, then render the "next" button
-    if (currentStep < 3) {
-      return (
-        <Button color="primary float-right" onClick={this._next}>
-          Next
-        </Button>
-      );
-    }
-    // ...else render nothing
-    return null;
-  }
-
-  get submitButton() {
-    let currentStep = this.state.currentStep;
-
-    // If the current step is the last step, then render the "submit" button
-    if (currentStep > 2) {
-      return <Button color="primary float-right">Submit</Button>;
-    }
-    // ...else render nothing
     return null;
   }
 
@@ -147,8 +139,12 @@ class MasterForm extends Component {
             </CardBody>
             <CardFooter>
               {this.previousButton}
-              {this.nextButton}
-              {this.submitButton}
+              {this.state.currentStep === 1 ?
+               ( <Button color="primary float-right" onClick={this.funcStep1}> Next </Button>) :
+         this.state.currentStep === 2 ?
+          ( <Button color="primary float-right" onClick={this.funcStep2}> Next
+        </Button>) : null}
+              {this.state.currentStep === 3 && (<Button color="primary float-right">Submit</Button>)}
             </CardFooter>
           </Card>
         </Form>
