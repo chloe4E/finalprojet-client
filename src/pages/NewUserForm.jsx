@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import WorkHistoryForm from "../components/WorkHistoryForm";
 import EducationForm from "../components/EducationForm";
 import PersonalInfoForm from "../components/PersonalInformationForm";
@@ -12,11 +12,11 @@ import "../styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import { AuthContext } from "../context/auth.context";
-
+import { useNavigate } from "react-router-dom";
 
 function NewUserForm() {
-
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -30,7 +30,7 @@ function NewUserForm() {
       <Container>
         <Row>
           <Col>
-            <MasterForm userId={user._id}/>
+            <MasterForm userId={user._id} navigate={navigate} />
           </Col>
         </Row>
       </Container>
