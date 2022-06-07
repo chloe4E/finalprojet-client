@@ -33,6 +33,8 @@ class MasterForm extends Component {
       workExperience: "",
       jobTitle: "",
       jobDescription: "",
+      jobId: "",
+      coverLetterId: "",
     };
 
     // Bind the submission to handleChange()
@@ -104,7 +106,7 @@ class MasterForm extends Component {
     const { workExperience } = this.state;
     axios
       .post(
-        `${process.env.REACT_APP_API_URL}/api/new-job/${this.state.userId}/form`,
+        `${process.env.REACT_APP_API_URL}/api/new-job/form`,
         {
           workExperience: workExperience,
         },
@@ -112,8 +114,12 @@ class MasterForm extends Component {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       )
-      .then(() => {
-        this.setState({ currentStep: this.state.currentStep + 1 });
+      .then((res) => {
+        this.setState({
+          currentStep: this.state.currentStep + 1,
+          jobId: res.data._id,
+        });
+        console.log(this.state);
       })
       .catch((err) => console.log(err));
   };
@@ -121,28 +127,25 @@ class MasterForm extends Component {
   funcStep3 = (event) => {
     const storedToken = localStorage.getItem("authToken");
     event.preventDefault();
-    const { jobTitle, jobDescription } = this.state;
+    const { jobTitle, jobDescription, jobId } = this.state;
+    console.log("we are in function 3");
     console.log(this.state);
     axios
       .put(
-        `${process.env.REACT_APP_API_URL}/api/new-job/${this.state.userId}/form2`,
+        `${process.env.REACT_APP_API_URL}/api/new-job/form2`,
         {
           title: jobTitle,
           description: jobDescription,
+          jobId: jobId,
         },
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
       )
-      .then(() => {
-        console.log("we are HERE");
+      .then((res) => {
+        console.log("we are HERE" + res.data);
         this.setState({ currentStep: this.state.currentStep + 1 });
-      })
-      .then(() => {
-        console.log("we are here dude");
-        /* const navigate = useNavigate(); */
-        /*  navigate("/job/cover-letter"); */
-        this.props.navigate("/job/cover-letter");
+        this.props.navigate(`/job/${res.data._id}/cover-letter`);
       })
       .catch((err) => console.log(err));
   };
