@@ -29,8 +29,8 @@ function App() {
         <Route path="/user-profile" element={<ProfileLandingPage />} />
         <Route path="/new-user/form" element={<NewUserForm />} />
         <Route path="/job/create" element={<CreateJobPage />} />
-        <Route path="/job/cover-letter" element={<CoverLetterPage />} />
-        <Route path="/job/cover-letter/edit" element={<EditCoverLetterPage />} />
+        <Route path="/job/:coverLetterId/cover-letter" element={<CoverLetterPage />} />
+        <Route path="/job/:coverLetterId/cover-letter/edit" element={<EditCoverLetterPage />} />
         <Route path="job/details" element={<JobDetailsPage />} />
         <Route path="/job/details/edit" element={<EditJobDetailPage />} />
       </Routes>

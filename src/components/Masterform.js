@@ -127,7 +127,7 @@ class MasterForm extends Component {
   funcStep3 = (event) => {
     const storedToken = localStorage.getItem("authToken");
     event.preventDefault();
-    const { jobTitle, jobDescription, jobId } = this.state;
+    const { jobTitle, jobDescription, jobId, name, surname } = this.state;
     console.log("we are in function 3");
     console.log(this.state);
     axios
@@ -137,6 +137,8 @@ class MasterForm extends Component {
           title: jobTitle,
           description: jobDescription,
           jobId: jobId,
+          name: name,
+          surname: surname,
         },
         {
           headers: { Authorization: `Bearer ${storedToken}` },

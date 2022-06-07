@@ -1,7 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 function CoverLetterPage() {
+  const { coverLetterId } = useParams();
 
 
   const [coverLetter, setCoverLetter] = useState(null);
@@ -10,12 +13,13 @@ function CoverLetterPage() {
   const getCoverLetter = async () => {
     try {
       const getToken = localStorage.getItem('authToken');
-      let response = await axios.get(`${process.env.REACT_APP_API_URL}/api/job/cover-letter`, {
+      let response = await axios.get(`${process.env.REACT_APP_API_URL}/api/job/${coverLetterId}/cover-letter`, {
         headers: {
           Authorization: `Bearer ${getToken}`,
         },
       });
       setCoverLetter(response.data);
+      console.log("we are at the cover letter page")
       console.log(response.data)
     } catch (error) {
       console.log(error);
@@ -34,6 +38,10 @@ function CoverLetterPage() {
       <h1>HERE IS YOUR COVER LETTER</h1>
       { coverLetter && ( <>
           <p> {coverLetter.text} </p>
+          <Link to={`/job/${coverLetterId}/cover-letter/edit`}>
+          <Button>Edit Cover Letter</Button> 
+          </Link>
+
         </>)}
 
     </div>
