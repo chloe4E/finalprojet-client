@@ -1,5 +1,5 @@
 import React from "react";
-import videoBored from "../Images/pexels-ron-lach-8691675.mp4";
+import videoBored from "../Images/video-bored.mp4";
 import styled from "styled-components";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
@@ -20,7 +20,7 @@ function HomePage() {
 
       <Row>
         <Col sm="4">
-          <h2>We know you.</h2>
+          <h2>We see you.</h2>
           <p>
             You have the skills, a good CV and you found your dream job. There
             is one thing missing: A cover Letter. <br/> Writing a good cover letter is
