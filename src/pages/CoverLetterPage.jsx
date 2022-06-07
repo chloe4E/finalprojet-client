@@ -2,6 +2,21 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import styled from "styled-components";
+
+
+const CoverLetterTag = styled.p`
+  background-color: #99ff00;
+  margin-left: 250px;
+  margin-right: 250px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-style: solid;
+  border-color: #99ff00;
+  white-space: pre-wrap;
+  text-align: justify;
+  
+`;
 
 function CoverLetterPage() {
   const { coverLetterId } = useParams();
@@ -37,7 +52,7 @@ function CoverLetterPage() {
     <div>
       <h1>HERE IS YOUR COVER LETTER</h1>
       { coverLetter && ( <>
-          <p> {coverLetter.text} </p>
+          <CoverLetterTag> {coverLetter.text} </CoverLetterTag>
           <Link to={`/job/${coverLetterId}/cover-letter/edit`}>
           <Button>Edit Cover Letter</Button> 
           </Link>

@@ -36,12 +36,20 @@ function ProfileLandingPage() {
           <p> {user.name} </p>
           <p> {user.surname} </p>
         </>)}
-       
         <h4>Job list</h4>
-     <JobCard />
+       <div lassName="JobDetails"> 
+       
+       {user && user.jobList.map((job) => {
+     
+       return (
+       <div key={job._id}> 
+     <JobCard job={job} />
       <Link to="/user-profile/edit">
         <Button>Edit</Button>
       </Link>
+      </div> )
+       })}
+      </div>
      
     </>
   );

@@ -20,7 +20,6 @@ function NewUserForm() {
 
   return (
     <>
-      <div>EditProfilePage</div>
       {/*       <PersonalInfoForm />
       <WorkHistoryForm />
       <EducationForm /> */}

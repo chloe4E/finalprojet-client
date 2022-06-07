@@ -15,8 +15,8 @@ const ImageTag = styled.img`
   margin-right: 50px;
 `;
 const NavbarTag = styled.div`
-  font-family: "lasEnter", monospace;
-  font-size: 40px;
+  font-family: neon;
+  font-size: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 `;
@@ -62,7 +62,7 @@ function NavBar() {
                 style={{ color: "white" }}
                 className="nav-link"
                  to="/user-profile">
-                  My profile
+                  Profile
                 </Link>
                 <Button onClick={logOutUser}>Logout</Button>
               </>

@@ -1,26 +1,43 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
+import { Link, useParams } from 'react-router-dom';
 
 
-function JobCard() {
+function JobCard({job}) {
+
+ /*  { props.user && props.user.jobList.map((job) => {
+    return <div> 
+    <h1>{prop.job.title}</h1> 
+    <h2> Job description</h2>
+    <p>{prop.job.description}</p>
+    <h2>Work experience</h2>
+    <p>{prop.job.workExperience}</p>
+    <h2>Cover Letter</h2>
+    <p>{prop.job.coverLetter}</p>
+    </div>
+   })} */
+
+
   return (
     <div>
+    
       <Row> 
         <Col sm="12"> 
-         <h1>Job title</h1>
+         <h1>{job.title}</h1>
         </Col>
         </Row>
         <Row> 
         <Col  sm="6"> 
         <h2> Job description</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quibusdam aut repellat vero dolores. Earum eveniet dolores qui. Voluptas quod facilis repellendus eum amet voluptates praesentium voluptatum quos unde assumenda!</p>
+        <p>{job.description}</p>
         <h2>Work experience</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita, adipisci non dolorem aliquam architecto dolore eius iste sapiente quaerat quibusdam, animi voluptatum facilis autem numquam officia nesciunt quasi reiciendis at.</p>
+        <p>{job.workExperience}</p>
         </Col>
         <Col sm="6">
         <h2>Cover Letter</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, doloribus iure. Ipsum fugiat maxime ullam vel aliquid? Quo deserunt dicta officiis sed obcaecati, eligendi ea minima ipsa, dolor harum magni!</p>
+        <p>{job.coverLetter[0] && job.coverLetter[0].text}</p>
         </Col>  
         </Row>
     </div>
