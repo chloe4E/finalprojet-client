@@ -18,7 +18,7 @@ const NavbarTag = styled.div`
   font-family: neon;
   font-size: 20px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 `;
 
 const ButtonTag = styled.button`

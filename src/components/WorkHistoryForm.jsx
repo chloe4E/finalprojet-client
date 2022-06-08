@@ -5,6 +5,32 @@ import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import styled from "styled-components";
+
+const ButtonTag = styled.button`
+  background-color: #99ff00;
+  border: 0 solid #99ff00;
+  font-family: "neon", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+  margin-left: 30px;
+`;
+
+const FormTag = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+`;
 
 function WorkHistoryForm() {
   const [workHistory, setWorkHistory] = useState("");
@@ -42,56 +68,56 @@ function WorkHistoryForm() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextArea1">
-          <Form.Label column sm="4">
-            Tell us about your work experience
-          </Form.Label>
-          <Col sm="6">
-            <Form.Control
-              as="textarea"
-              placeholder="5 years of experience as a fullstack developper with React"
-              rows={3}
-              onChange={handleWorkHistory}
-            />
-          </Col>
-        </Form.Group>
+      <Form onSubmit={handleSubmit} className="d-flex align-items-center">
+        <FormTag>
+          <Form.Group as={Row} className="mb-3 " controlId="formPlaintextArea1">
+            <Form.Label column sm="4">
+              Tell us about your work experience
+            </Form.Label>
+            <Col sm="4">
+              <Form.Control
+                as="textarea"
+                placeholder="5 years of experience as a fullstack developper with React"
+                rows={3}
+                onChange={handleWorkHistory}
+              />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextArea2">
-          <Form.Label column sm="4">
-            What is the job title you are applying for?
-          </Form.Label>
-          <Col sm="6">
-            <Form.Control
-              type="text"
-              placeholder="Socialite"
-              onChange={handleTitle}
-            />
-          </Col>
-        </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextArea2">
+            <Form.Label column sm="4">
+              What is the job title you are applying for?
+            </Form.Label>
+            <Col sm="4">
+              <Form.Control
+                type="text"
+                placeholder="Socialite"
+                onChange={handleTitle}
+              />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextArea3">
-          <Form.Label column sm="4">
-            Copy-paste here the job description:
-          </Form.Label>
-          <Col sm="6">
-            <Form.Control
-              as="textarea"
-              placeholder="Take a privte jet to most popular parties"
-              rows={3}
-              onChange={handleJobDescription}
-            />
-          </Col>
-        </Form.Group>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextArea3">
+            <Form.Label column sm="4">
+              Copy-paste here the job description:
+            </Form.Label>
+            <Col sm="4">
+              <Form.Control
+                as="textarea"
+                placeholder="Take a privte jet to most popular parties"
+                rows={3}
+                onChange={handleJobDescription}
+              />
+            </Col>
+          </Form.Group>
 
-        <Button type="submit" variant="primary">
-          Here you go
-        </Button>
+          <ButtonTag type="submit" variant="primary">
+            Here you go
+          </ButtonTag>
+        </FormTag>
       </Form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>Take me back to profile</p>
-      <Link to="/user-profile"> profile</Link>
     </>
   );
 }
