@@ -21,6 +21,23 @@ const NavbarTag = styled.div`
   margin-bottom: 20px;
 `;
 
+const ButtonTag = styled.button`
+  background-color: #99ff00;
+  border: 0 solid #99ff00;
+  display: flex;
+  font-family: "neon", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(15deg);
+  text-decoration: none;
+  margin-left: 30px;
+`;
+
 function NavBar() {
   const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
@@ -31,10 +48,7 @@ function NavBar() {
           <ImageTag src={logo} />
 
           <Nav className="me-auto">
-            <Link 
-            style={{ color: "white" }}
-            className="nav-link"
-            to="/">
+            <Link style={{ color: "white" }} className="nav-link" to="/">
               Home
             </Link>
 
@@ -48,23 +62,25 @@ function NavBar() {
                   Log in
                 </Link>
 
-                <Link 
-                style={{ color: "white" }}
-                className="nav-link"
-                 to="/signup">
+                <Link
+                  style={{ color: "white" }}
+                  className="nav-link"
+                  to="/signup"
+                >
                   Sign up
                 </Link>
               </>
             )}
             {isLoggedIn && (
               <>
-                <Link 
-                style={{ color: "white" }}
-                className="nav-link"
-                 to="/user-profile">
+                <Link
+                  style={{ color: "white" }}
+                  className="nav-link"
+                  to="/user-profile"
+                >
                   Profile
                 </Link>
-                <Button onClick={logOutUser}>Logout</Button>
+                <ButtonTag onClick={logOutUser}>Logout</ButtonTag>
               </>
             )}
           </Nav>

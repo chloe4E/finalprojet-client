@@ -5,7 +5,7 @@ import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import { AuthContext } from "../context/auth.context"; // <== IMPORT
+import { AuthContext } from "../context/auth.context";
 
 function LoginPage() {
   const [password, setPassword] = useState("");
@@ -14,33 +14,33 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext); //  <== ADD
+  const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handlePassword = (e) => setPassword(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try{
-
-      
+    try {
       const body = { email, password };
-      
-      let response = await axios
-      .post(`${process.env.REACT_APP_API_URL}/auth/login`, body)
+
+      let response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/login`,
+        body
+      );
       // Request to the server's endpoint `/auth/login` returns a response
       // with the JWT string ->  response.data.authToken
       storeToken(response.data.authToken);
       await authenticateUser();
-      
-      navigate("/new-user/form");
-      
-    }catch(err){
-      setErrorMessage(err.response.data.errorMessage);
 
+      //trying to check if the logged in User already has a job created or not:
+      /* let existingUser = await axios
+      .post(`${process.env.REACT_APP_API_URL}/api/user-profile/check`, body) */
+
+      navigate("/new-user/form");
+    } catch (err) {
+      setErrorMessage(err.response.data.errorMessage);
     }
-      
-    
   };
 
   return (
