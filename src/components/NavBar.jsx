@@ -19,10 +19,14 @@ const NavbarTag = styled.div`
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 0;
+  margin-left: 160px;
+  margin-right: 160px;
+
 `;
 
 const ButtonTag = styled.button`
   background-color: #99ff00;
+  color: #F51E71;
   border: 0 solid #99ff00;
   display: flex;
   font-family: "neon", monospace;
@@ -36,6 +40,7 @@ const ButtonTag = styled.button`
   transform: rotate(15deg);
   text-decoration: none;
   margin-left: 30px;
+  
 `;
 
 function NavBar() {

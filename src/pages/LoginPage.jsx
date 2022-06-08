@@ -6,6 +6,36 @@ import { Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
+import styled from "styled-components";
+
+const WhiteStripes = styled.div`
+  margin-left: 160px;
+  margin-right: 160px;
+  margin-top: 50px;
+`;
+
+const ButtonTag = styled.button`
+  background-color: #99ff00;
+  border: 0 solid #99ff00;
+  font-family: "neon", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+  margin-left: 30px;
+`;
+
+const FormTag = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+`;
 
 function LoginPage() {
   const [password, setPassword] = useState("");
@@ -44,42 +74,46 @@ function LoginPage() {
   };
 
   return (
-    <>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-          <Form.Label column sm="2">
-            Email
-          </Form.Label>
-          <Col sm="3">
-            <Form.Control
-              type="email"
-              placeholder="Email"
-              onChange={handleEmail}
-            />
-          </Col>
-        </Form.Group>
+    <WhiteStripes>
+      <FormTag>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+            <Form.Label column sm="2">
+              Email
+            </Form.Label>
+            <Col sm="10">
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                onChange={handleEmail}
+              />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-          <Form.Label column sm="2">
-            Password
-          </Form.Label>
-          <Col sm="3">
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={handlePassword}
-            />
-          </Col>
-        </Form.Group>
-        <Button type="submit" variant="primary">
-          Log in
-        </Button>
-      </Form>
+          <Form.Group
+            as={Row}
+            className="mb-3"
+            controlId="formPlaintextPassword"
+          >
+            <Form.Label column sm="2">
+              Password
+            </Form.Label>
+            <Col sm="10">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={handlePassword}
+              />
+            </Col>
+          </Form.Group>
+          <ButtonTag type="submit" variant="primary">
+            Log in
+          </ButtonTag>
+        </Form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-      <p>Don't have an account?</p>
-      <Link to="/signup"> Sign up</Link>
-    </>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </FormTag>
+    </WhiteStripes>
   );
 }
 

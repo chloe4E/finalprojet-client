@@ -12,8 +12,8 @@ const CoverLetterTag = styled.p`
   border-color: #99ff00;
   white-space: pre-wrap;
   text-align: justify;
-  margin-left: 300px;
-  margin-right: 300px;
+  margin-left: 100px;
+  margin-right: 100px;
   padding: 50px;
   border-radius: 15px;
 `;
@@ -71,7 +71,7 @@ function JobCard({ job }) {
           </Col> */}
 
           <Col sm="12" className="mx-5">
-            <h3>Cover Letter</h3>
+            {/* <h3>Cover Letter</h3> */}
             <CoverLetterTag>
               {job.coverLetter[0] && job.coverLetter[0].text}
             </CoverLetterTag>

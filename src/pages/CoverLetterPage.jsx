@@ -17,6 +17,22 @@ const CoverLetterTag = styled.p`
   border-radius: 15px;
 `;
 
+const ButtonTag = styled.button`
+  background-color: #F51E71;
+  color: white;
+  border: 0 solid #99ff00;
+  font-family: "neon", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+  margin-left: 30px;
+`;
 function CoverLetterPage() {
   const { coverLetterId } = useParams();
 
@@ -52,7 +68,7 @@ function CoverLetterPage() {
         <>
           <CoverLetterTag> {coverLetter.text} </CoverLetterTag>
           <Link to={`/job/${coverLetterId}/cover-letter/edit`}>
-            <Button>Edit Cover Letter</Button>
+            <ButtonTag>Edit Cover Letter</ButtonTag>
           </Link>
         </>
       )}

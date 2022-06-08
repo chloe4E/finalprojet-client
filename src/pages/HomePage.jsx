@@ -101,8 +101,8 @@ function HomePage() {
               <Card.Body>
                 <Card.Title>How does it work?</Card.Title>
                 <Card.Text>
-                  We have a team of full-time minions working day and night to
-                  write for you. Joking. AI does the job.
+                  We have a team of full-time minions to 
+                  write it for you. Joking. AI does the job.
                 </Card.Text>
               </Card.Body>
             </BackgroundTag>

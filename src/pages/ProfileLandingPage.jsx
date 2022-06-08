@@ -29,6 +29,11 @@ const ButtonTag = styled.button`
   text-decoration: none;
 `;
 
+const WhiteStripes = styled.div`
+  margin-left: 160px;
+  margin-right: 160px;
+`;
+
 function ProfileLandingPage() {
   const [user, setUser] = useState(null);
 
@@ -55,7 +60,8 @@ function ProfileLandingPage() {
   }, []);
 
   return (
-    <>
+    <WhiteStripes>
+    
       <ButtonTag>
         <Link to="/user-profile/add-job">Create a new cover letter</Link>
       </ButtonTag>
@@ -78,7 +84,7 @@ function ProfileLandingPage() {
             );
           })}
       </div>
-    </>
+    </WhiteStripes>
   );
 }
 

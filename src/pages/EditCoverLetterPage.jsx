@@ -7,18 +7,20 @@ import styled from "styled-components";
 
 const ButtonTag = styled.button`
 
-  background-color: #99FF00;
+  background-color: #F51E71;
+  color: white;
   border: 0 solid #99FF00;
-  display: flex;
   font-family: "neon", monospace;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
   line-height: 1.75rem;
-  padding: .75rem 1.65rem;
+  padding: 0.55rem 1.35rem;
   width: 100%;
-  max-width: 460px;
-  transform: rotate(-3deg);
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+ 
 
 `;
 
@@ -94,7 +96,7 @@ function EditCoverLetterPage() {
   return (
     <div>
 
-<form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <LabelTag for="name">Your Cover Letter:</LabelTag>
         <br />
         <textarea

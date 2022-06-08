@@ -8,7 +8,8 @@ import axios from "axios";
 import styled from "styled-components";
 
 const ButtonTag = styled.button`
-  background-color: #99ff00;
+  background-color: #F51E71;
+  color: white;
   border: 0 solid #99ff00;
   font-family: "neon", monospace;
   font-size: 1rem;
@@ -23,14 +24,7 @@ const ButtonTag = styled.button`
   margin-left: 30px;
 `;
 
-const FormTag = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: stretch;
-  align-content: center;
-`;
+
 
 function WorkHistoryForm() {
   const [workHistory, setWorkHistory] = useState("");
@@ -68,13 +62,13 @@ function WorkHistoryForm() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit} className="d-flex align-items-center">
-        <FormTag>
+      <Form onSubmit={handleSubmit}>
+        
           <Form.Group as={Row} className="mb-3 " controlId="formPlaintextArea1">
             <Form.Label column sm="4">
               Tell us about your work experience
             </Form.Label>
-            <Col sm="4">
+            <Col sm="8">
               <Form.Control
                 as="textarea"
                 placeholder="5 years of experience as a fullstack developper with React"
@@ -88,7 +82,7 @@ function WorkHistoryForm() {
             <Form.Label column sm="4">
               What is the job title you are applying for?
             </Form.Label>
-            <Col sm="4">
+            <Col sm="8">
               <Form.Control
                 type="text"
                 placeholder="Socialite"
@@ -101,7 +95,7 @@ function WorkHistoryForm() {
             <Form.Label column sm="4">
               Copy-paste here the job description:
             </Form.Label>
-            <Col sm="4">
+            <Col sm="8">
               <Form.Control
                 as="textarea"
                 placeholder="Take a privte jet to most popular parties"
@@ -114,7 +108,7 @@ function WorkHistoryForm() {
           <ButtonTag type="submit" variant="primary">
             Here you go
           </ButtonTag>
-        </FormTag>
+      
       </Form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}

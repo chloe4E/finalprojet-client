@@ -19,6 +19,10 @@ function AuthProviderWrapper(props) {
     localStorage.setItem("authToken", token);
   };
 
+  const getToken = () => {
+    return localStorage.getItem("authToken")
+  }
+
   /* 
     Functions for handling the authentication status (isLoggedIn, isLoading, user)
     will be added here later in the next step
@@ -84,6 +88,7 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
+        getToken
       }}
     >
       {props.children}

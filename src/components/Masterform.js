@@ -16,9 +16,45 @@ import Step2 from "./Step2";
 import Step3 from "./Step3";
 
 import styled from "styled-components";
+
 import MultiStepProgressBar from "./MultiStepProgressBar";
 
 import axios from "axios";
+
+
+const ButtonTag = styled.button`
+  background-color: #99ff00;
+  color: #F51E71;
+  border: 0 solid #99ff00;
+  font-family: "neon", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+  margin-left: 30px;
+`;
+
+const ButtonPreviousTag = styled.button`
+  background-color: #004661;
+  color: white;
+  border: 0 solid #004661;
+  font-family: "neon", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+  margin-left: 30px;
+`;
 
 class MasterForm extends Component {
   constructor(props) {
@@ -159,9 +195,9 @@ class MasterForm extends Component {
     // If the current step is not 1, then render the "previous" button
     if (currentStep !== 1) {
       return (
-        <Button color="secondary float-left" onClick={this._prev}>
+        <ButtonPreviousTag color="secondary float-left" onClick={this._prev}>
           Previous
-        </Button>
+        </ButtonPreviousTag>
       );
     }
 
@@ -174,7 +210,7 @@ class MasterForm extends Component {
       <>
         <Form onSubmit={this.handleSubmit}>
           <Card>
-            <CardHeader>Create an Account</CardHeader>
+            <CardHeader>This is where the magic happens</CardHeader>
             <CardBody>
               <CardTitle>
                 <MultiStepProgressBar currentStep={this.state.currentStep} />
@@ -199,20 +235,20 @@ class MasterForm extends Component {
             <CardFooter>
               {this.previousButton}
               {this.state.currentStep === 1 ? (
-                <Button color="primary float-right" onClick={this.funcStep1}>
+                <ButtonTag color="primary float-right" onClick={this.funcStep1}>
                   {" "}
                   Next{" "}
-                </Button>
+                </ButtonTag>
               ) : this.state.currentStep === 2 ? (
-                <Button color="primary float-right" onClick={this.funcStep2}>
+                <ButtonTag color="primary float-right" onClick={this.funcStep2}>
                   {" "}
                   Next
-                </Button>
+                </ButtonTag>
               ) : null}
               {this.state.currentStep > 2 && (
-                <Button color="primary float-right" onClick={this.funcStep3}>
+                <ButtonTag color="primary float-right" onClick={this.funcStep3}>
                   Submit
-                </Button>
+                </ButtonTag>
               )}
             </CardFooter>
           </Card>
