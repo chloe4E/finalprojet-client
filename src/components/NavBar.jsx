@@ -10,12 +10,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const ImageTag = styled.img`
-  width: 50px;
-  height: 50px;
+  /* width: 50px;
+  height: 50px; */
   margin-right: 50px;
 `;
 const NavbarTag = styled.div`
-  font-family: neon;
+ font-family: 'Anton', sans-serif;
   font-size: 20px;
   margin-top: 20px;
   margin-bottom: 0;
@@ -29,7 +29,7 @@ const ButtonTag = styled.button`
   color: #F51E71;
   border: 0 solid #99ff00;
   display: flex;
-  font-family: "neon", monospace;
+  font-family: 'Anton', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;

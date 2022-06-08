@@ -33,9 +33,7 @@ const JustifyText = styled.p`
   text-align: justify;
 `;
 
-const DarkBackgroundTag = styled.div`
-  /*   background-color: #22acae; */
-`;
+
 const WhiteStripes = styled.div`
   margin-left: 160px;
   margin-right: 160px;
@@ -46,7 +44,7 @@ function HomePage() {
     <>
       <WhiteStripes>
         <H1Tag>Writing Cover Letters is BORING</H1Tag>
-        <DarkBackgroundTag>
+        
           <Row>
             <Col sm="6" className="ps-5">
               <JustifyText>
@@ -78,12 +76,11 @@ function HomePage() {
                 width="480"
                 height="248"
                 frameBorder="0"
-                class="giphy-embed"
-                allowFullScreen
+               
+                
               ></iframe>
             </Col>
           </Row>
-        </DarkBackgroundTag>
         <H2Tag>
           Thank god you googled "cover letter generator" and landed here.
         </H2Tag>
@@ -99,7 +96,7 @@ function HomePage() {
               ></iframe>
 
               <Card.Body>
-                <Card.Title>How does it work?</Card.Title>
+                <h5>How does it work?</h5>
                 <Card.Text>
                   We have a team of full-time minions to 
                   write it for you. Joking. AI does the job.
@@ -118,7 +115,7 @@ function HomePage() {
               ></iframe>
 
               <Card.Body>
-                <Card.Title>What do I have to do?</Card.Title>
+                <h5>What do I have to do?</h5>
                 <Card.Text>
                   Feed the AI. Don't be scared. It doesn't bite.
                 </Card.Text>
@@ -134,7 +131,7 @@ function HomePage() {
                 allowFullScreen
               ></iframe>
               <Card.Body>
-                <Card.Title>What are you waiting for?</Card.Title>
+                <h5>What are you waiting for?</h5>
                 <Card.Text>IT'S FREE. NO REALLY IT'S FREE.</Card.Text>
               </Card.Body>
             </BackgroundTag>

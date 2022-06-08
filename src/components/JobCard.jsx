@@ -75,6 +75,7 @@ function JobCard({ job }) {
             <CoverLetterTag>
               {job.coverLetter[0] && job.coverLetter[0].text}
             </CoverLetterTag>
+            
           </Col>
         </Row>
       </BackgroundTag>

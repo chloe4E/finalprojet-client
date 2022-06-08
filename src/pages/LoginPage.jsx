@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import styled from "styled-components";
+import notebook from "../Images/notebook.png";
 
 const WhiteStripes = styled.div`
   margin-left: 160px;
@@ -17,7 +18,7 @@ const WhiteStripes = styled.div`
 const ButtonTag = styled.button`
   background-color: #99ff00;
   border: 0 solid #99ff00;
-  font-family: "neon", monospace;
+  font-family: 'Anton', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -35,7 +36,16 @@ const FormTag = styled.div`
   justify-content: center;
   align-items: center;
   text-align: justify;
+  margin-top: 160px;
 `;
+const AbsoluteNotebookImage = styled.img`
+  position: absolute;
+  top: 15%;
+  left: 28%;
+ 
+  z-index: -1;
+`;
+
 
 function LoginPage() {
   const [password, setPassword] = useState("");
@@ -75,6 +85,7 @@ function LoginPage() {
 
   return (
     <WhiteStripes>
+      <AbsoluteNotebookImage src={notebook} />
       <FormTag>
         <Form onSubmit={handleSubmit}>
           <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">

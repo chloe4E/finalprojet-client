@@ -25,13 +25,17 @@
   src: url(../public/LasEnter_PersonalUseOnly.ttf);
 }
 
+
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Varela+Round&display=swap');
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: "neon", monospace;
+  font-family: 'Anton', sans-serif;
 }
 
 p {

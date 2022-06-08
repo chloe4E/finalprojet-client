@@ -10,7 +10,7 @@ const ButtonTag = styled.button`
   background-color: #F51E71;
   color: white;
   border: 0 solid #99FF00;
-  font-family: "neon", monospace;
+  font-family: 'Anton', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -24,6 +24,24 @@ const ButtonTag = styled.button`
 
 `;
 
+const ButtonDeleteTag = styled.button`
+
+  background-color: #004661;
+  color: white;
+  border: 0 solid #004661;
+  font-family: 'Anton', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+ 
+
+`;
 const LabelTag = styled.label`
 font-size: 40px;
 font-family: "neon", monospace;
@@ -112,7 +130,7 @@ function EditCoverLetterPage() {
          <ButtonTag type="submit">Save</ButtonTag>
       </form>
       <br />
-      <ButtonTag onClick={deleteCoverLetter}>Delete</ButtonTag>
+      <ButtonDeleteTag onClick={deleteCoverLetter}>Delete</ButtonDeleteTag>
     </div>
 
     

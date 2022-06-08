@@ -15,7 +15,7 @@ const ButtonTag = styled.button`
   background-color: #99ff00;
   border: 0 solid #99ff00;
   display: flex;
-  font-family: "neon", monospace;
+  font-family: 'Anton', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
