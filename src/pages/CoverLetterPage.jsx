@@ -51,21 +51,22 @@ function CoverLetterPage() {
         }
       );
       setCoverLetter(response.data);
+      setFetching(true);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
+    setFetching(true);
     getCoverLetter();
-    setFetching(false);
   }, []);
 
   return (
     <div>
       <h1>HERE IS YOUR COVER LETTER</h1>
-      { fetching && <p>Fetching data</p>}
-      {coverLetter &&  (
+      {/*  {fetching && <p>Fetching data</p>} */}
+      {coverLetter && (
         <>
           <CoverLetterTag> {coverLetter.text} </CoverLetterTag>
           <Link to={`/job/${coverLetterId}/cover-letter/edit`}>

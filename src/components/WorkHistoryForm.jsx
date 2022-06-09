@@ -8,10 +8,10 @@ import axios from "axios";
 import styled from "styled-components";
 
 const ButtonTag = styled.button`
-  background-color: #F51E71;
+  background-color: #f51e71;
   color: white;
   border: 0 solid #99ff00;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -24,13 +24,12 @@ const ButtonTag = styled.button`
   margin-left: 30px;
 `;
 
-
-
 function WorkHistoryForm() {
   const [workHistory, setWorkHistory] = useState("");
   const [Title, setTitle] = useState("");
   const [JobDescription, setJobDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [fetching, setFetching] = useState(false);
 
   const navigate = useNavigate();
 
@@ -39,7 +38,10 @@ function WorkHistoryForm() {
   const handleJobDescription = (e) => setJobDescription(e.target.value);
 
   const handleSubmit = (e) => {
+    console.log(`we are in the handle submit ${fetching}`);
     e.preventDefault();
+    setFetching(true);
+    console.log(fetching);
     const storedToken = localStorage.getItem("authToken");
 
     axios
@@ -62,8 +64,17 @@ function WorkHistoryForm() {
 
   return (
     <>
-      <Form onSubmit={handleSubmit}>
-        
+      {fetching ? (
+        <div>
+          <iframe
+            src="https://giphy.com/embed/3o84U6421OOWegpQhq"
+            width="600"
+            height="500"
+            frameBorder="0"
+          ></iframe>
+        </div>
+      ) : (
+        <Form onSubmit={handleSubmit}>
           <Form.Group as={Row} className="mb-3 " controlId="formPlaintextArea1">
             <Form.Label column sm="4">
               Tell us about your work experience
@@ -108,8 +119,8 @@ function WorkHistoryForm() {
           <ButtonTag type="submit" variant="primary">
             Here you go
           </ButtonTag>
-      
-      </Form>
+        </Form>
+      )}
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </>
