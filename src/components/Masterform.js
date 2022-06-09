@@ -43,7 +43,7 @@ const ButtonPreviousTag = styled.button`
   background-color: #004661;
   color: white;
   border: 0 solid #004661;
-  font-family: "neon", monospace;
+  font-family: 'Anton', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
