@@ -15,20 +15,18 @@ function AuthProviderWrapper(props) {
   const navigate = useNavigate();
 
   const storeToken = (token) => {
-    //  <==  ADD
     localStorage.setItem("authToken", token);
   };
 
   const getToken = () => {
-    return localStorage.getItem("authToken")
-  }
+    return localStorage.getItem("authToken");
+  };
 
   /* 
     Functions for handling the authentication status (isLoggedIn, isLoading, user)
     will be added here later in the next step
   */
   const authenticateUser = async () => {
-    //  <==  ADD
     // Get the stored token from the localStorage
     const storedToken = localStorage.getItem("authToken");
 
@@ -62,12 +60,10 @@ function AuthProviderWrapper(props) {
     }
   };
   const removeToken = () => {
-    // <== ADD
     // Upon logout, remove the token from the localStorage
     localStorage.removeItem("authToken");
   };
   const logOutUser = () => {
-    // <== ADD
     // To log out the user, remove the token
     removeToken();
     // and update the state variables
@@ -88,7 +84,7 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
-        getToken
+        getToken,
       }}
     >
       {props.children}

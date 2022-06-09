@@ -24,12 +24,11 @@ function NewUserForm() {
 
   const checkFirstTime = () => {
     if (user != null && user.jobList.length > 0) {
-      navigate(`/`);
+      navigate(`/user-profile`);
     }
   };
 
   useEffect(() => {
-
     checkFirstTime();
   }, []);
 
@@ -37,7 +36,7 @@ function NewUserForm() {
     <>
       {user != null ? (
         <WhiteStripes>
-      <Helmet>
+          <Helmet>
             <style>{"body { background-color: lightgray; }"}</style>
           </Helmet>
           <Container>
@@ -51,7 +50,6 @@ function NewUserForm() {
       ) : (
         <p>Error</p>
       )}
-      
     </>
   );
 }
