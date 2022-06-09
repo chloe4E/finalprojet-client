@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const CoverLetterTag = styled.p`
@@ -32,12 +32,30 @@ const ButtonTag = styled.button`
   text-decoration: none;
   margin-left: 30px;
 `;
+
+const ButtonDeleteTag = styled.button`
+  background-color: #004661;
+  color: white;
+  border: 0 solid #004661;
+  font-family: "Anton", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+`;
+
 function CoverLetterPage() {
   const { coverLetterId } = useParams();
 
   const [coverLetter, setCoverLetter] = useState(null);
 
   const [fetching, setFetching] = useState(true);
+  const navigate = useNavigate();
 
   const getCoverLetter = async () => {
     try {
@@ -52,6 +70,23 @@ function CoverLetterPage() {
       );
       setCoverLetter(response.data);
       setFetching(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteCoverLetter = async () => {
+    try {
+      const getToken = localStorage.getItem("authToken");
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/job/${coverLetterId}/cover-letter/delete`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken}`,
+          },
+        }
+      );
+      navigate("/user-profile");
     } catch (error) {
       console.log(error);
     }
@@ -72,6 +107,7 @@ function CoverLetterPage() {
           <Link to={`/job/${coverLetterId}/cover-letter/edit`}>
             <ButtonTag>Edit Cover Letter</ButtonTag>
           </Link>
+          <ButtonDeleteTag onClick={deleteCoverLetter}>Delete</ButtonDeleteTag>
         </>
       )}
     </div>
