@@ -49,6 +49,13 @@ const ButtonDeleteTag = styled.button`
   text-decoration: none;
 `;
 
+const H1Tag = styled.h1`
+
+  color: #f51e71;
+margin-top: 16px;
+  font-family: "Anton", sans-serif;
+ 
+`;
 function CoverLetterPage() {
   const { coverLetterId } = useParams();
 
@@ -99,7 +106,7 @@ function CoverLetterPage() {
 
   return (
     <div>
-      <h1>HERE IS YOUR COVER LETTER</h1>
+      <H1Tag>HERE IS YOUR COVER LETTER</H1Tag>
       {/*  {fetching && <p>Fetching data</p>} */}
       {coverLetter && (
         <>

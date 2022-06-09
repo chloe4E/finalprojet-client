@@ -14,7 +14,7 @@ const ButtonTag = styled.button`
   background-color: #99ff00;
   border: 0 solid #99ff00;
   display: flex;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -59,7 +59,6 @@ function ProfileLandingPage() {
 
   return (
     <WhiteStripes>
-    
       <ButtonTag>
         <Link to="/user-profile/add-job">Create a new cover letter</Link>
       </ButtonTag>
@@ -74,13 +73,17 @@ function ProfileLandingPage() {
 
       <div lassName="JobDetails">
         {user &&
-          user.jobList.map((job) => {
-            return (
-              <div key={job._id}>
-                <JobCard job={job} />
-              </div>
-            );
-          })}
+          user.jobList
+            .slice()
+            .reverse()
+            .map((job) => {
+              if (!job || !job._id || !job.coverLetter.length) return null;
+              return (
+                <div key={job._id}>
+                  <JobCard job={job} />
+                </div>
+              );
+            })}
       </div>
     </WhiteStripes>
   );

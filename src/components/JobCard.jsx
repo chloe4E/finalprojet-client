@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -45,6 +46,22 @@ const BackgroundTag = styled.p`
   border-radius: 15px;
 `;
 
+const ButtonDeleteTag = styled.button`
+  background-color: #004661;
+  color: white;
+  border: 0 solid #004661;
+  font-family: "Anton", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+`;
+
 function JobCard({ job }) {
   /*  { props.user && props.user.jobList.map((job) => {
     return <div> 
@@ -57,6 +74,26 @@ function JobCard({ job }) {
     <p>{prop.job.coverLetter}</p>
     </div>
    })} */
+  const [deleted, setDeleted] = useState(false);
+
+  const deleteCoverLetter = async () => {
+    try {
+      const getToken = localStorage.getItem("authToken");
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/api/job/${job.coverLetter[0]._id}/cover-letter/delete`,
+        {
+          headers: {
+            Authorization: `Bearer ${getToken}`,
+          },
+        }
+      );
+      setDeleted(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (deleted) return null;
 
   return (
     <div>
@@ -70,9 +107,7 @@ function JobCard({ job }) {
         </Row>
 
         <Row className="justify-content-md-center">
-
           <Col sm="12" className="mx-5">
-          
             <CoverLetterTag>
               {job.coverLetter[0] && job.coverLetter[0].text}
             </CoverLetterTag>
@@ -80,6 +115,9 @@ function JobCard({ job }) {
             <Link to={`/job/${job.coverLetter[0]._id}/cover-letter/edit`}>
               <ButtonTag>Edit Cover Letter</ButtonTag>
             </Link>
+            <ButtonDeleteTag onClick={deleteCoverLetter}>
+              Delete
+            </ButtonDeleteTag>
           </Col>
         </Row>
       </BackgroundTag>

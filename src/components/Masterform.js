@@ -164,6 +164,8 @@ class MasterForm extends Component {
     event.preventDefault();
     const { jobTitle, jobDescription, jobId, name, surname } = this.state;
 
+    this.setState({ currentStep: this.state.currentStep + 1, fetching: true });
+
     axios
       .put(
         `${process.env.REACT_APP_API_URL}/api/new-job/form2`,
@@ -179,8 +181,6 @@ class MasterForm extends Component {
         }
       )
       .then((res) => {
-        this.setState({ currentStep: this.state.currentStep + 1 });
-        this.setState({ fetching: true });
         this.props.navigate(`/job/${res.data._id}/cover-letter`);
       })
       .catch((err) => console.log(err));
