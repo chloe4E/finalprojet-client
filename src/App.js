@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 
 import CoverLetterPage from "./pages/CoverLetterPage";
 import EditCoverLetterPage from "./pages/EditCoverLetterPage";
-import EditJobDetailPage from "./pages/EditJobDetailPage";
 import NewUserForm from "./pages/NewUserForm";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -32,7 +31,6 @@ function App() {
           path="/job/:coverLetterId/cover-letter/edit"
           element={<EditCoverLetterPage />}
         />
-        <Route path="/job/details/edit" element={<EditJobDetailPage />} />
       </Routes>
     </div>
   );

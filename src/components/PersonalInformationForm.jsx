@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { Col } from "react-bootstrap";
@@ -26,7 +26,6 @@ function PersonalInfoForm() {
       .then((response) => {
         // Request to the server's endpoint `/auth/login` returns a response
         // with the JWT string ->  response.data.authToken
-        console.log("JWT token", response.data.authToken);
 
         navigate("/user-profile");
       })

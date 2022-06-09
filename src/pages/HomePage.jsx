@@ -1,10 +1,9 @@
 import React from "react";
-import videoBored from "../Images/video-bored.mp4";
 import styled from "styled-components";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Card } from "react-bootstrap";
-import logo from "../Images/placeholder.png";
+
 
 const H1Tag = styled.h1`
   background-color: #99ff00;
@@ -85,10 +84,6 @@ function HomePage() {
             </JustifyText>
           </Col>
           <Col sm="6">
-            {/*  <video width="100%" height="400px" preload="auto" autoPlay>
-            <source src={videoBored} type="video/mp4" />
-            Your browser does not support HTML5 video.
-          </video> */}
             <iframe
               src="https://giphy.com/embed/3o6YfYvk4uB415sOTm"
               width="480"

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import {
   Form,
-  Button,
   Card,
   CardHeader,
   CardBody,
@@ -164,8 +163,7 @@ class MasterForm extends Component {
     const storedToken = localStorage.getItem("authToken");
     event.preventDefault();
     const { jobTitle, jobDescription, jobId, name, surname } = this.state;
-    console.log("we are in function 3");
-    console.log(this.state);
+  
     axios
       .put(
         `${process.env.REACT_APP_API_URL}/api/new-job/form2`,
@@ -181,7 +179,6 @@ class MasterForm extends Component {
         }
       )
       .then((res) => {
-        console.log("we are HERE" + res.data);
         this.setState({ currentStep: this.state.currentStep + 1 });
         this.props.navigate(`/job/${res.data._id}/cover-letter`);
       })

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Button } from 'react-bootstrap';
 import styled from "styled-components";
 
 
@@ -65,8 +64,6 @@ function EditCoverLetterPage() {
         },
       });
       setText(response.data.text);
-      console.log("we are at the cover letter page")
-      console.log(response.data)
     } catch (error) {
       console.log(error);
     }
@@ -121,8 +118,8 @@ function EditCoverLetterPage() {
           type="textarea"
           name="text"
           id="text"
-          value={text} // Prop: The name input data
-          onChange={handleText} // Prop: Puts data into the state
+          value={text} 
+          onChange={handleText}
           rows={10}
           cols={90}
         />

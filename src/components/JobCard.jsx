@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
-import { Card } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const ButtonTag = styled.button`
@@ -72,23 +70,9 @@ function JobCard({ job }) {
         </Row>
 
         <Row className="justify-content-md-center">
-          {/* <Col sm="4" className="px-5">
-            <Card>
-              <Card.Body>
-                <Card.Title>Job description</Card.Title>
-                <Card.Text>{job.description}</Card.Text>
-              </Card.Body>
-            </Card>
-            <Card className="mt-2 mb-2">
-              <Card.Body>
-                <Card.Title>Work experience</Card.Title>
-                <Card.Text>{job.workExperience}</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col> */}
 
           <Col sm="12" className="mx-5">
-            {/* <h3>Cover Letter</h3> */}
+          
             <CoverLetterTag>
               {job.coverLetter[0] && job.coverLetter[0].text}
             </CoverLetterTag>

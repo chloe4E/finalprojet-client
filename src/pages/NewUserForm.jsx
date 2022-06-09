@@ -1,9 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import WorkHistoryForm from "../components/WorkHistoryForm";
-import EducationForm from "../components/EducationForm";
-import PersonalInfoForm from "../components/PersonalInformationForm";
 
-import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
 import MasterForm from "../components/Masterform";
 import { Container, Row, Col } from "reactstrap";
@@ -25,7 +21,6 @@ const WhiteStripes = styled.div`
 function NewUserForm() {
   const { getToken, user } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(user);
 
   const checkFirstTime = () => {
     if (user != null && user.jobList.length > 0) {
@@ -34,7 +29,7 @@ function NewUserForm() {
   };
 
   useEffect(() => {
-    console.log("Im reloading");
+
     checkFirstTime();
   }, []);
 
@@ -42,9 +37,6 @@ function NewUserForm() {
     <>
       {user != null ? (
         <WhiteStripes>
-      {/*       <PersonalInfoForm />
-      <WorkHistoryForm />
-      <EducationForm /> */}
       <Helmet>
             <style>{"body { background-color: lightgray; }"}</style>
           </Helmet>

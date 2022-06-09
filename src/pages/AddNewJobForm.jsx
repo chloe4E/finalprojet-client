@@ -1,19 +1,7 @@
 import React from "react";
 import WorkHistoryForm from "../components/WorkHistoryForm";
 import styled from "styled-components";
-import paper from "../Images/paper.jpeg";
-import notebook from "../Images/ripped-notebook-paper-vector-20237.jpeg";
 
-/* const PaperBackgroundTag = styled.div`
-   background-image: url(${notebook});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: "100vh";
-  width: "100vw";
-  
-`;
- */
 const FormTag = styled.div`
   display: flex;
   justify-content: center;

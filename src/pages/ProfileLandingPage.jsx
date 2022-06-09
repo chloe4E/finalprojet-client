@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import JobCard from "../components/JobCard";
 import styled from "styled-components";
@@ -49,7 +48,6 @@ function ProfileLandingPage() {
         }
       );
       setUser(response.data);
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }

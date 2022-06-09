@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import styled from "styled-components";
 
 const CoverLetterTag = styled.p`
@@ -18,10 +17,10 @@ const CoverLetterTag = styled.p`
 `;
 
 const ButtonTag = styled.button`
-  background-color: #F51E71;
+  background-color: #f51e71;
   color: white;
   border: 0 solid #99ff00;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -38,6 +37,8 @@ function CoverLetterPage() {
 
   const [coverLetter, setCoverLetter] = useState(null);
 
+  const [fetching, setFetching] = useState(true);
+
   const getCoverLetter = async () => {
     try {
       const getToken = localStorage.getItem("authToken");
@@ -50,8 +51,6 @@ function CoverLetterPage() {
         }
       );
       setCoverLetter(response.data);
-      console.log("we are at the cover letter page");
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -59,12 +58,14 @@ function CoverLetterPage() {
 
   useEffect(() => {
     getCoverLetter();
+    setFetching(false);
   }, []);
 
   return (
     <div>
       <h1>HERE IS YOUR COVER LETTER</h1>
-      {coverLetter && (
+      { fetching && <p>Fetching data</p>}
+      {coverLetter &&  (
         <>
           <CoverLetterTag> {coverLetter.text} </CoverLetterTag>
           <Link to={`/job/${coverLetterId}/cover-letter/edit`}>
