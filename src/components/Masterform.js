@@ -20,12 +20,11 @@ import MultiStepProgressBar from "./MultiStepProgressBar";
 
 import axios from "axios";
 
-
 const ButtonTag = styled.button`
   background-color: #99ff00;
-  color: #F51E71;
+  color: #f51e71;
   border: 0 solid #99ff00;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -42,7 +41,7 @@ const ButtonPreviousTag = styled.button`
   background-color: #004661;
   color: white;
   border: 0 solid #004661;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -70,6 +69,7 @@ class MasterForm extends Component {
       jobDescription: "",
       jobId: "",
       coverLetterId: "",
+      fetching: false,
     };
 
     // Bind the submission to handleChange()
@@ -163,7 +163,7 @@ class MasterForm extends Component {
     const storedToken = localStorage.getItem("authToken");
     event.preventDefault();
     const { jobTitle, jobDescription, jobId, name, surname } = this.state;
-  
+
     axios
       .put(
         `${process.env.REACT_APP_API_URL}/api/new-job/form2`,
@@ -180,6 +180,7 @@ class MasterForm extends Component {
       )
       .then((res) => {
         this.setState({ currentStep: this.state.currentStep + 1 });
+        this.setState({ fetching: true });
         this.props.navigate(`/job/${res.data._id}/cover-letter`);
       })
       .catch((err) => console.log(err));
@@ -205,51 +206,71 @@ class MasterForm extends Component {
   render() {
     return (
       <>
-        <Form onSubmit={this.handleSubmit}>
-          <Card>
-            <CardHeader>This is where the magic happens</CardHeader>
-            <CardBody>
-              <CardTitle>
-                <MultiStepProgressBar currentStep={this.state.currentStep} />
-              </CardTitle>
-              <CardText />
-              <Step1
-                currentStep={this.state.currentStep}
-                handleChange={this.handleChange}
-                email={this.state.email}
-              />
-              <Step2
-                currentStep={this.state.currentStep}
-                handleChange={this.handleChange}
-                email={this.state.username}
-              />
-              <Step3
-                currentStep={this.state.currentStep}
-                handleChange={this.handleChange}
-                email={this.state.password}
-              />
-            </CardBody>
-            <CardFooter>
-              {this.previousButton}
-              {this.state.currentStep === 1 ? (
-                <ButtonTag color="primary float-right" onClick={this.funcStep1}>
-                  {" "}
-                  Next{" "}
-                </ButtonTag>
-              ) : this.state.currentStep === 2 ? (
-                <ButtonTag color="primary float-right" onClick={this.funcStep2}>
-                  {" "}
-                  Next
-                </ButtonTag>
-              ) : null}
-              {this.state.currentStep > 2 && (
-                <ButtonTag color="primary float-right" onClick={this.funcStep3}>
-                  Submit
-                </ButtonTag>
-              )}
-            </CardFooter>
-          </Card>
-        </Form>
+        {this.state.fetching ? (
+          <div>
+            <iframe
+              src="https://giphy.com/embed/3o84U6421OOWegpQhq"
+              width="600"
+              height="500"
+              frameBorder="0"
+            ></iframe>{" "}
+          </div>
+        ) : (
+          <Form onSubmit={this.handleSubmit}>
+            <Card>
+              <CardHeader>This is where the magic happens</CardHeader>
+              <CardBody>
+                <CardTitle>
+                  <MultiStepProgressBar currentStep={this.state.currentStep} />
+                </CardTitle>
+                <CardText />
+                <Step1
+                  currentStep={this.state.currentStep}
+                  handleChange={this.handleChange}
+                  email={this.state.email}
+                />
+                <Step2
+                  currentStep={this.state.currentStep}
+                  handleChange={this.handleChange}
+                  email={this.state.username}
+                />
+                <Step3
+                  currentStep={this.state.currentStep}
+                  handleChange={this.handleChange}
+                  email={this.state.password}
+                />
+              </CardBody>
+              <CardFooter>
+                {this.previousButton}
+                {this.state.currentStep === 1 ? (
+                  <ButtonTag
+                    color="primary float-right"
+                    onClick={this.funcStep1}
+                  >
+                    {" "}
+                    Next{" "}
+                  </ButtonTag>
+                ) : this.state.currentStep === 2 ? (
+                  <ButtonTag
+                    color="primary float-right"
+                    onClick={this.funcStep2}
+                  >
+                    {" "}
+                    Next
+                  </ButtonTag>
+                ) : null}
+                {this.state.currentStep > 2 && (
+                  <ButtonTag
+                    color="primary float-right"
+                    onClick={this.funcStep3}
+                  >
+                    Submit
+                  </ButtonTag>
+                )}
+              </CardFooter>
+            </Card>
+          </Form>
+        )}
       </>
     );
   }
