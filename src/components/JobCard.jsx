@@ -6,6 +6,23 @@ import { Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
+const ButtonTag = styled.button`
+  background-color: #f51e71;
+  color: white;
+  border: 0 solid #99ff00;
+  font-family: "Anton", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1.75rem;
+  padding: 0.55rem 1.35rem;
+  width: 100%;
+  max-width: 300px;
+  transform: rotate(-15deg);
+  text-decoration: none;
+  margin-left: 30px;
+`;
+
 const CoverLetterTag = styled.p`
   background-color: #99ff00;
   border-style: solid;
@@ -75,7 +92,10 @@ function JobCard({ job }) {
             <CoverLetterTag>
               {job.coverLetter[0] && job.coverLetter[0].text}
             </CoverLetterTag>
-            
+
+            <Link to={`/job/${job.coverLetter[0]._id}/cover-letter/edit`}>
+              <ButtonTag>Edit Cover Letter</ButtonTag>
+            </Link>
           </Col>
         </Row>
       </BackgroundTag>

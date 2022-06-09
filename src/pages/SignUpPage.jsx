@@ -11,20 +11,28 @@ const WhiteStripes = styled.div`
   margin-left: 160px;
   margin-right: 160px;
   margin-top: 50px;
- 
 `;
 const FormTag = styled.div`
+  font-family: "Anton", sans-serif;
+  color: #f51e71;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: justify;
+  background-color: #99ff00;
+  margin-top: 80px;
+  padding: 80px;
+  margin-left: 160px;
+  margin-right: 160px;
+  border-radius: 15px;
+  box-shadow: 6px 16px 38px 5px rgba(0, 0, 0, 0.54);
 `;
 
-
 const ButtonTag = styled.button`
-  background-color: #99ff00;
-  border: 0 solid #99ff00;
-  font-family: 'Anton', sans-serif;
+  background-color: #f51e71;
+  color: white;
+  border: 0 solid #f51e71;
+  font-family: "Anton", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -52,7 +60,6 @@ function SignUpPage() {
 
     const body = { email, password };
 
-
     axios
       .post(`${process.env.REACT_APP_API_URL}/auth/signup`, body)
       .then(() => {
@@ -65,39 +72,43 @@ function SignUpPage() {
 
   return (
     <WhiteStripes>
-    <FormTag> 
-      <Form onSubmit={handleSubmit}>
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-          <Form.Label column sm="2">
-            Email
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control
-              type="email"
-              placeholder="Email"
-              onChange={handleEmail}
-            />
-          </Col>
-        </Form.Group>
+      <FormTag>
+        <Form onSubmit={handleSubmit}>
+          <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+            <Form.Label column sm="4">
+              Email
+            </Form.Label>
+            <Col sm="10">
+              <Form.Control
+                type="email"
+                placeholder="Email"
+                onChange={handleEmail}
+              />
+            </Col>
+          </Form.Group>
 
-        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
-          <Form.Label column sm="2">
-            Password
-          </Form.Label>
-          <Col sm="10">
-            <Form.Control
-              type="password"
-              placeholder="Password"
-              onChange={handlePassword}
-            />
-          </Col>
-        </Form.Group>
-        <ButtonTag type="submit" variant="primary">
-          Sign up
-        </ButtonTag>
-      </Form>
+          <Form.Group
+            as={Row}
+            className="mb-3"
+            controlId="formPlaintextPassword"
+          >
+            <Form.Label column sm="4">
+              Password
+            </Form.Label>
+            <Col sm="10">
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                onChange={handlePassword}
+              />
+            </Col>
+          </Form.Group>
+          <ButtonTag type="submit" variant="primary">
+            Sign up
+          </ButtonTag>
+        </Form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </FormTag>
     </WhiteStripes>
   );

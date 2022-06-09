@@ -3,11 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
-import { Button } from "react-bootstrap";
 import axios from "axios";
 import { AuthContext } from "../context/auth.context";
 import styled from "styled-components";
-import notebook from "../Images/notebook.png";
 
 const WhiteStripes = styled.div`
   margin-left: 160px;
@@ -16,9 +14,11 @@ const WhiteStripes = styled.div`
 `;
 
 const ButtonTag = styled.button`
+  font-family: "Anton", sans-serif;
   background-color: #99ff00;
+  color: #f51e71;
   border: 0 solid #99ff00;
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
   font-size: 1rem;
   font-weight: 700;
   justify-content: center;
@@ -32,20 +32,21 @@ const ButtonTag = styled.button`
 `;
 
 const FormTag = styled.div`
+  font-family: "Anton", sans-serif;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: justify;
-  margin-top: 160px;
+  margin-top: 80px;
+  //background-image: url({notebook});
+  background-color: #1dc1cc;
+  padding: 80px;
+  margin-left: 160px;
+  margin-right: 160px;
+  border-radius: 15px;
+  box-shadow: 6px 16px 38px 5px rgba(0, 0, 0, 0.54);
 `;
-const AbsoluteNotebookImage = styled.img`
-  position: absolute;
-  top: 15%;
-  left: 28%;
- 
-  z-index: -1;
-`;
-
 
 function LoginPage() {
   const [password, setPassword] = useState("");
@@ -85,11 +86,10 @@ function LoginPage() {
 
   return (
     <WhiteStripes>
-      <AbsoluteNotebookImage src={notebook} />
       <FormTag>
         <Form onSubmit={handleSubmit}>
           <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
-            <Form.Label column sm="2">
+            <Form.Label column sm="4">
               Email
             </Form.Label>
             <Col sm="10">
@@ -106,7 +106,7 @@ function LoginPage() {
             className="mb-3"
             controlId="formPlaintextPassword"
           >
-            <Form.Label column sm="2">
+            <Form.Label column sm="4">
               Password
             </Form.Label>
             <Col sm="10">
