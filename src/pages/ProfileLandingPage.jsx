@@ -31,6 +31,10 @@ const ButtonTag = styled.button`
 const WhiteStripes = styled.div`
   margin-left: 160px;
   margin-right: 160px;
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 `;
 
 function ProfileLandingPage() {

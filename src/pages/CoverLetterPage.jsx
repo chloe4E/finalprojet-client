@@ -14,6 +14,12 @@ const CoverLetterTag = styled.p`
   white-space: pre-wrap;
   text-align: justify;
   border-radius: 15px;
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
 `;
 
 const ButtonTag = styled.button`
@@ -50,11 +56,9 @@ const ButtonDeleteTag = styled.button`
 `;
 
 const H1Tag = styled.h1`
-
   color: #f51e71;
-margin-top: 16px;
+  margin-top: 16px;
   font-family: "Anton", sans-serif;
- 
 `;
 function CoverLetterPage() {
   const { coverLetterId } = useParams();

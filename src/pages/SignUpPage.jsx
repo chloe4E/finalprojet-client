@@ -9,7 +9,10 @@ import styled from "styled-components";
 const WhiteStripes = styled.div`
   margin-left: 160px;
   margin-right: 160px;
-  margin-top: 50px;
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 `;
 const FormTag = styled.div`
   font-family: "Anton", sans-serif;
@@ -25,6 +28,12 @@ const FormTag = styled.div`
   margin-right: 160px;
   border-radius: 15px;
   box-shadow: 6px 16px 38px 5px rgba(0, 0, 0, 0.54);
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 5px;
+  }
 `;
 
 const ButtonTag = styled.button`

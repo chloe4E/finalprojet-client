@@ -4,7 +4,6 @@ import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 
-
 const H1Tag = styled.h1`
   background-color: #99ff00;
   color: #f51e71;
@@ -26,6 +25,12 @@ const BackgroundTag = styled.div`
   margin-left: 15px;
   margin-right: 15px;
   height: 300px;
+  @media (max-width: 900px) {
+    padding-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 `;
 
 const TitleTag = styled.h3`
@@ -50,6 +55,11 @@ const CoverLetterTag = styled.p`
   margin-right: 50px;
   padding: 50px;
   border-radius: 15px;
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+  }
 `;
 
 const JustifyText = styled.p`
@@ -59,6 +69,10 @@ const JustifyText = styled.p`
 const WhiteStripes = styled.div`
   margin-left: 160px;
   margin-right: 160px;
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 `;
 
 function HomePage() {
@@ -89,6 +103,7 @@ function HomePage() {
               width="480"
               height="248"
               frameBorder="0"
+              className="GIF"
             ></iframe>
           </Col>
         </Row>
@@ -104,6 +119,7 @@ function HomePage() {
                 frameBorder="0"
                 class="giphy-embed"
                 allowFullScreen
+                className="GIF"
               ></iframe>
 
               <Card.Body>
@@ -123,6 +139,7 @@ function HomePage() {
                 frameBorder="0"
                 class="giphy-embed"
                 allowFullScreen
+                className="GIF"
               ></iframe>
 
               <Card.Body>
@@ -140,6 +157,7 @@ function HomePage() {
                 frameBorder="0"
                 class="giphy-embed"
                 allowFullScreen
+                className="GIF"
               ></iframe>
               <Card.Body>
                 <h5>What are you waiting for?</h5>

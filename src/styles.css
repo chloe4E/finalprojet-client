@@ -25,9 +25,7 @@
   src: url(../public/LasEnter_PersonalUseOnly.ttf);
 }
 
-
-
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Varela+Round&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Varela+Round&display=swap");
 
 h1,
 h2,
@@ -35,9 +33,21 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
 }
 
 p {
   font-family: monospace;
+}
+
+@media screen and (max-width: 900px) {
+  .navBarLogo {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .GIF {
+    display: none;
+  }
 }

@@ -15,9 +15,11 @@ import styled from "styled-components";
 const WhiteStripes = styled.div`
   margin-left: 160px;
   margin-right: 160px;
-  margin-top: 50px;
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 `;
-
 function NewUserForm() {
   const { getToken, user } = useContext(AuthContext);
   const navigate = useNavigate();

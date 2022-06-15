@@ -32,6 +32,11 @@ const CoverLetterTag = styled.p`
   margin-right: 100px;
   padding: 50px;
   border-radius: 15px;
+  @media (max-width: 900px) {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 5px;
+  }
 `;
 
 const TitleTag = styled.h1`
